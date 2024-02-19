@@ -1,56 +1,38 @@
 import { v4 as uuid } from 'uuid';
 
+export default class Model {
+    constructor() {
+        this.list = [];
+    };
+
+    addTask(taskName) {
+        const newTask = new Task(taskName);
+
+        this.list.push(newTask);
+    };
+
+    editTask(id, newTitle) {
+       this.list = this.list.map(task => {
+            return (task.id === id) ? {...task, title: newTitle} : task;
+        })
+    };
+
+    removeTask(id) {
+        this.list = this.list.filter(task => task.id !== id);
+    };
+
+    toggleTask(id) {
+        this.list = this.list.map(task => {
+            // console.log(task);
+            return (task.id === id) ? {...task, isDone: !task.isDone} : task;
+        })
+    };    
+};
+
 class Task {
     constructor(title) {
         this.title = title,
-            this.id = uuid(),
-            this.isDone = false
+        this.id = uuid(),
+        this.isDone = false
     };
-
-    setStatus = (value) => this.isDone = value;
-}
-
-class List {
-    constructor(name) {
-        this.name = name,
-            this.tasks = []
-        this.id = uuid();
-    };
-
-    addTask(task) {
-        this.tasks.push(task);
-    };
-
-    removeTask(task) {
-        this.tasks = this.tasks.filter(currentTask => currentTask.id !== task.id);
-    };
-}
-
-class App {
-    constructor() {
-        this.lists = [];
-    };
-
-    addList(targetList) {
-        this.lists.push(targetList);
-    };
-
-    removeList(targetList) {
-        this.lists = this.lists.filter(currentList => currentList.id !== targetList.id);
-    };
-
-    moveTask(targetTask, targetList) {
-        outer: for (let oldList of this.lists) {
-            for (let task of oldList.tasks) {
-                if (task.id === targetTask.id) {
-                    targetList.addTask(targetTask);
-                    oldList.removeTask(targetTask);
-                    break outer;
-                }
-            }
-        };
-        
-    };
-}
-
-export { App, Task, List };
+};
