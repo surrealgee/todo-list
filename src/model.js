@@ -2,7 +2,11 @@ import { v4 as uuid } from 'uuid';
 
 export default class Model {
     constructor() {
-        this.list = [];
+        this.list = [
+            new Task("Coding"),
+            new Task("Reading"),
+            new Task("Exercising"),
+        ];
     };
 
     addTask(taskName) {
