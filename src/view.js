@@ -1,28 +1,32 @@
 export default class View {
-    constructor() {}
+    constructor() {
+
+    };
 
     render = (list) => {
-        const rootEl = document.querySelector('body');
-        rootEl.innerHTML = '';
-
-        const listEl = document.createElement('ul');
+        const todosEl = document.querySelector('.todos');
 
         list.forEach(task => {
-            const taskEl = document.createElement('li');
+            const listItem = document.createElement('li');
+            listItem.id = task.id;
 
-            const checkboxEl = document.createElement('input');
-            checkboxEl.type = "checkbox";
-            checkboxEl.checked = task.isDone;
+            const checkboxElement = document.createElement('input');
+            checkboxElement.type = 'checkbox';
+            checkboxElement.checked = task.isDone;
+            checkboxElement.id = task.id;
 
-            listEl.appendChild(checkboxEl);
+            const textElement = document.createElement('span');
+            textElement.textContent = task.title;
+            textElement.id = task.id;
 
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'X'
 
-            taskEl.textContent = task.title;
-            taskEl.id = task.id
+            listItem.appendChild(checkboxElement);
+            listItem.appendChild(textElement);
+            listItem.appendChild(deleteBtn);
 
-            listEl.appendChild(taskEl);
+            todosEl.appendChild(listItem);
         })
-
-        rootEl.appendChild(listEl);
     };
 };

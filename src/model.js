@@ -6,6 +6,7 @@ export default class Model {
             new Task("Coding"),
             new Task("Reading"),
             new Task("Exercising"),
+            new Task("Flexing")
         ];
     };
 
