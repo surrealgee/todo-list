@@ -34,7 +34,7 @@ header {
 }
 
 main {
-    margin: -70px auto 0;
+    margin: 0 auto ;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -85,6 +85,11 @@ li input {
 li span {
     font-size: 0.85rem;
     color: #494C6B;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #d1d2da;
 }
 
 li button {
