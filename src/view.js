@@ -36,7 +36,9 @@ export default class View {
     render = (list) => {
         const todoList = this.createElement('ul');
 
-        todoList.innerHtml = '';
+        this.main.innerHTML = '';
+
+        this.main.appendChild(todoList);
 
         if (list.length === 0) {
             const para = this.createElement('li', { textContent: 'Nothing to do. Add a Task!' })
@@ -64,7 +66,6 @@ export default class View {
                 todoList.appendChild(listItem);
             })
         }
-        this.main.appendChild(todoList);
     };
 
     get _todoText() {
@@ -73,5 +74,16 @@ export default class View {
 
     _resetInput() {
         this.input.value = '';
+    }
+
+    bindAddTask(handler) {
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            handler(this.input.value);
+
+            this._resetInput();
+
+        })
     }
 };

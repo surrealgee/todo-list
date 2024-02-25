@@ -5,5 +5,3 @@ import './style.css';
 
 
 const app = new Controller(new Model(), new View());
-
-console.log(app);

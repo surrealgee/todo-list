@@ -17,8 +17,8 @@ export default class Model {
     };
 
     editTask(id, newTitle) {
-       this.list = this.list.map(task => {
-            return (task.id === id) ? {...task, title: newTitle} : task;
+        this.list = this.list.map(task => {
+            return (task.id === id) ? { ...task, title: newTitle } : task;
         })
     };
 
@@ -28,16 +28,15 @@ export default class Model {
 
     toggleTask(id) {
         this.list = this.list.map(task => {
-            // console.log(task);
-            return (task.id === id) ? {...task, isDone: !task.isDone} : task;
+            return (task.id === id) ? { ...task, isDone: !task.isDone } : task;
         })
-    };    
+    };
 };
 
 class Task {
     constructor(title) {
         this.title = title,
-        this.id = uuid(),
-        this.isDone = false
+            this.id = uuid(),
+            this.isDone = false
     };
 };
