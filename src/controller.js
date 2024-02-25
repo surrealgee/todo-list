@@ -6,6 +6,9 @@ export default class Controller {
         this.onChange(this.model.list);
 
         this.view.bindAddTask(this.handleAddTask);
+        this.view.bindRemoveTask(this.handleRemoveTask);
+        // this.view.bindToggleTask(this.handleToggleTask);
+        // this.view.bindEditTask(this.handleEditTask);
     };
 
     onChange(taskList) {

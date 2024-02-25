@@ -6,9 +6,11 @@ export default class View {
         this.logo = this.createElement('h1', { textContent: 'todo' });
         this.form = this.createElement('form');
         this.input = this.createElement('input', { type: 'text', name: 'title', placeholder: 'Create a new todo...' });
+        this.todoList = this.createElement('ul', { class: 'todo_list' });
 
         this.form.appendChild(this.input);
         this.header.append(this.logo, this.form);
+        this.main.append(this.todoList);
         this.root.append(this.header, this.main);
 
     };
@@ -34,15 +36,11 @@ export default class View {
     };
 
     render = (list) => {
-        const todoList = this.createElement('ul');
-
-        this.main.innerHTML = '';
-
-        this.main.appendChild(todoList);
+        this.todoList.innerHTML = '';
 
         if (list.length === 0) {
             const para = this.createElement('li', { textContent: 'Nothing to do. Add a Task!' })
-            todoList.appendChild(para);
+            this.todoList.appendChild(para);
         } else {
             list.forEach(task => {
                 const listItem = this.createElement('li', { id: task.id });
@@ -59,12 +57,16 @@ export default class View {
                         class: task.isDone ? "done" : "undone",
                     });
 
-                const deleteBtn = this.createElement('button', { textContent: 'X' });
+                const deleteBtn = this.createElement('button', { textContent: 'X', class: 'delete' });
 
                 listItem.append(checkboxElement, textElement, deleteBtn);
 
-                todoList.appendChild(listItem);
+                this.todoList.appendChild(listItem);
             })
+        }
+
+        if (!this.main.firstChild) {
+            this.main.appendChild(todoList);
         }
     };
 
@@ -84,6 +86,16 @@ export default class View {
 
             this._resetInput();
 
+        })
+    }
+
+    bindRemoveTask(handler) {
+        const todoList = document.querySelector('ul');
+
+        todoList.addEventListener('click', (e) => {
+            if (e.target.className === 'delete') {
+                handler(e.target.parentNode.id);
+            }
         })
     }
 };
