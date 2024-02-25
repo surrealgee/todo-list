@@ -13,7 +13,21 @@ export default class View {
         this.main.append(this.todoList);
         this.root.append(this.header, this.main);
 
+        this._temporaryTodoName;
+        this.listenForTemporaryName();
+
     };
+
+    listenForTemporaryName() {
+        this.todoList.addEventListener('input', (e) => {
+
+            if (e.target.contentEditable) {
+                // console.log(e.target);
+                this._temporaryTodoName = e.target.textContent;
+                // console.log(this._temporaryTodoName);
+            }
+        })
+    }
 
     // Creates a new element using the chosen "tag" and takes a "props" object to assign attributes to the element.
     createElement(tag, props) {
@@ -55,6 +69,7 @@ export default class View {
                     {
                         textContent: task.title,
                         class: task.isDone ? "done" : "undone",
+                        contentEditable: true,
                     });
 
                 const deleteBtn = this.createElement('button', { textContent: 'X', class: 'delete' });
@@ -102,6 +117,15 @@ export default class View {
             console.log(e.target.type);
             if (e.target.type === 'checkbox') {
                 handler(e.target.parentNode.id);
+            }
+        })
+    }
+
+    bindEditTask(handler) {
+        this.todoList.addEventListener('focusout', (e) => {
+            if (this._temporaryTodoName) {
+                handler(e.target.parentElement.id, this._temporaryTodoName);
+                this._temporaryTodoName = '';
             }
         })
     }

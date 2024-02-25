@@ -8,7 +8,7 @@ export default class Controller {
         this.view.bindAddTask(this.handleAddTask);
         this.view.bindRemoveTask(this.handleRemoveTask);
         this.view.bindToggleTask(this.handleToggleTask);
-        // this.view.bindEditTask(this.handleEditTask);
+        this.view.bindEditTask(this.handleEditTask);
     };
 
     onChange(taskList) {
@@ -23,7 +23,7 @@ export default class Controller {
     }
 
     handleEditTask = (id, newTitle) => {
-        this.model.handleEditTask(id, newTitle);
+        this.model.editTask(id, newTitle);
 
         this.onChange(this.model.list);
     }
