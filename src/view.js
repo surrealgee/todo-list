@@ -90,10 +90,17 @@ export default class View {
     }
 
     bindRemoveTask(handler) {
-        const todoList = document.querySelector('ul');
-
-        todoList.addEventListener('click', (e) => {
+        this.todoList.addEventListener('click', (e) => {
             if (e.target.className === 'delete') {
+                handler(e.target.parentNode.id);
+            }
+        })
+    }
+
+    bindToggleTask(handler) {
+        this.todoList.addEventListener('change', (e) => {
+            console.log(e.target.type);
+            if (e.target.type === 'checkbox') {
                 handler(e.target.parentNode.id);
             }
         })
