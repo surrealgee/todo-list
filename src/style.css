@@ -1,102 +1,100 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: #E3E4F1;
-    line-height: 1.5;
-    font-family: "Josefin Sans", sans-serif;
+  background-color: #e3e4f1;
+  line-height: 1.5;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 /* Typography */
 
 h1 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 10px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 
 /* Layout */
 
 #root {
-    position: relative;
+  position: relative;
 }
 
 header {
-    background-image: url(./assets/images/bg-mobile-light.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    color: #fff;
-    height: 200px;
-    padding: 3em 1.5em;
+  background-image: url(./assets/images/bg-mobile-light.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: #fff;
+  height: 200px;
+  padding: 3em 1.5em;
 }
 
 main {
-    margin: 0 auto ;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    align-items: center;
-    justify-content: center;
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
 }
 
 main form {
-    width: 100%;
-    background-color: #fff; 
-    border-radius: 5px;  
-    
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 form input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 1.5em;
-    border-radius: 5px;  
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 1.5em;
+  border-radius: 5px;
 }
 
 main ul {
-    width: 100%;
-    list-style: none;
-    border-radius: 5px;
-    background-color: #fff;
+  width: 100%;
+  list-style: none;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 ul li {
-    padding: 1em;
-    display: flex;
-    gap: 0.5em;
-    align-items: center;
-    
+  padding: 1em;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
 }
 
-ul li+li {
-    border-top: 1px solid #E3E4F1;
+ul li + li {
+  border-top: 1px solid #e3e4f1;
 }
 
 li input {
-    border: 1px solid black;
-    border-radius: 50%;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 li span {
-    font-size: 0.85rem;
-    color: #494C6B;
+  font-size: 0.85rem;
+  color: #494c6b;
 }
 
 .done {
-    text-decoration: line-through;
-    color: #d1d2da;
+  text-decoration: line-through;
+  color: #d1d2da;
 }
 
 li button {
-    background-color: transparent;
-    border: none;
-    margin-inline-start: auto;
-    color: #494c6b;
-    cursor: pointer;
-    padding: 0 0.5em;
+  background-color: transparent;
+  border: none;
+  margin-inline-start: auto;
+  color: #494c6b;
+  cursor: pointer;
+  padding: 0 0.5em;
 }
